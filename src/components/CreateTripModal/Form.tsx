@@ -12,10 +12,10 @@ import { setUpdate } from '../../redux/setUpdate/setUpdate';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Box } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
-
+import { useMediaQuery } from '@material-ui/core';
 
 const Form = () => {
-
+    const isMobile = useMediaQuery('(max-width: 600px)');
     const databaseCollection = collection(db, 'data');
 
     const dispatch = useAppDispatch();
@@ -75,7 +75,7 @@ const Form = () => {
                 component="form"
                 sx={{
                     marginTop: '10px',
-                    width: '40ch',
+                    width: isMobile ? '35ch' : '40ch',
                     alignItems: 'center'
                 }}
                 spacing={3}

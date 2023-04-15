@@ -7,10 +7,12 @@ import MapInfo from './MapInfo';
 import Link from '@mui/material/Link';
 import { setUpdate } from '../../redux/setUpdate/setUpdate';
 import { setShowRouteInfo } from '../../redux/setShowRouteInfo/setShowRouteInfo';
+import { useMediaQuery } from '@material-ui/core';
 
 
 
 const RouteInfo = () => {
+    const isMobile = useMediaQuery('(max-width: 600px)');
     const id = useAppSelector(state => state.setIdReducer.id);
     const dispatch = useAppDispatch();
     const tripInfo = useAppSelector(state => state.fetchReducer.data).filter(e => e.id == id);
@@ -42,12 +44,12 @@ const RouteInfo = () => {
     return (
 
         <Box sx={{ width: '100%', maxHeight: '500px', overflow: 'auto' }}>
-            <Box sx={{ marginRight: '1rem' }}>
+            <Box sx={{ marginRight: isMobile ? 0 : '1rem' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginTop: '1rem' }}>
                     <Typography fontSize={20}>{tripInfo[0].title}</Typography>
                     <Typography fontSize={17}>{stringdistance}</Typography>
                 </Box>
-                <Typography sx={{ marginTop: '1rem', marginBottom: '1rem' }}>{tripInfo[0].fulldescription}</Typography>
+                <Typography sx={{ marginTop: '1rem', marginBottom: '1rem', marginLeft: '1rem' }}>{tripInfo[0].fulldescription}</Typography>
                 <Box>
                     <MapInfo />
                 </Box>
@@ -57,6 +59,7 @@ const RouteInfo = () => {
                             component="button"
                             variant="body2"
                             onClick={removeFromFavoriteTrip}
+                            sx={{ marginBottom: '1rem', marginRight: '1rem' }}
                         >
                             Remove from favorite
                         </Link>
@@ -65,13 +68,14 @@ const RouteInfo = () => {
                             component="button"
                             variant="body2"
                             onClick={addToFavoriteTrip}
+                            sx={{ marginBottom: '1rem', marginRight: '1rem' }}
                         >
                             Add to favorite
                         </Link>
                     }
 
                     <Link
-                        sx={{ color: 'red', textDecorationColor: '#ff00008a' }}
+                        sx={{ color: 'red', textDecorationColor: '#ff00008a', marginBottom: '1rem', marginRight: '1rem' }}
                         component="button"
                         variant="body2"
                         onClick={deleteTrip}

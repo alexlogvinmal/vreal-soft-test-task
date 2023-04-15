@@ -8,11 +8,11 @@ import List from '@mui/material/List';
 import { Box } from '@material-ui/core';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { fetchFiles } from '../../redux/fetchData/action';
-
+import { useMediaQuery } from '@material-ui/core';
 
 
 const RouteList = () => {
-
+    const isMobile = useMediaQuery('(max-width: 600px)');
 
     const dispatch = useAppDispatch();
     const update = useAppSelector(state => state.setUpdateReducer.update);
@@ -45,7 +45,7 @@ const RouteList = () => {
             <Paper
                 component="form"
                 elevation={3}
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, marginLeft: '1rem', marginTop: '1rem' }}
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: isMobile ? '80vw' : 400, marginLeft: '1rem', marginTop: '1rem' }}
             >
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}

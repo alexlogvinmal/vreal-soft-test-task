@@ -19,6 +19,7 @@ interface TripListType {
 
 
 const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: TripListType) => {
+
     let bckgcolor = '#a0a0a01c';
     let color = 'balack'
     const choseId = useAppSelector(state => state.setIdReducer.id)

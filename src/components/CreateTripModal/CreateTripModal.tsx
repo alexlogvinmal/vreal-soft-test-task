@@ -13,9 +13,11 @@ import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import Map from './Map';
 import Form from './Form';
 import { setOpenModal } from '../../redux/setOpenModal/setOpenModal';
+import { useMediaQuery } from '@material-ui/core';
 
 
 const CreateTripModal = () => {
+    const isMobile = useMediaQuery('(max-width: 600px)');
     const dispatch = useAppDispatch();
     const open = useAppSelector(state => state.setOpenModalReducer.modal);
     const handleClose = () => {
@@ -24,7 +26,7 @@ const CreateTripModal = () => {
 
     const CustomDialog = withStyles({
         paper: {
-            minWidth: '800px',
+            minWidth: isMobile ? '95vw' : '800px'
         },
     })(Dialog);
 
@@ -48,16 +50,17 @@ const CreateTripModal = () => {
                 </Box>
                 <DialogContent>
                     <Stack
-                        direction="row"
-                        divider={<Divider orientation="vertical" flexItem />}
+                        direction={isMobile ? 'column' : 'row'}
+                        divider={isMobile ? <Divider orientation="horizontal" flexItem /> : <Divider orientation="vertical" flexItem />}
                         spacing={2}
                         justifyContent={'space-evenly'}
+                        flexDirection={isMobile ? 'column-reverse' : 'row'}
                     >
                         <Form />
                         <Stack
                             component="form"
                             sx={{
-                                width: '40ch',
+                                width: isMobile ? '35ch' : '40ch',
                             }}
                             spacing={2}
                             noValidate
