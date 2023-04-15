@@ -3,7 +3,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { ListItemIcon } from '@material-ui/core';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useAppDispatch } from '../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { setId } from '../../redux/setId/setId';
 import { setShowRouteInfo } from '../../redux/setShowRouteInfo/setShowRouteInfo';
 
@@ -19,6 +19,16 @@ interface TripListType {
 
 
 const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: TripListType) => {
+    let bckgcolor =  '#a0a0a01c';
+    let color = 'balack'
+    const choseId = useAppSelector(state=>state.setIdReducer.id)
+    if(choseId==id){
+        bckgcolor= '#4a98e5'
+        color = 'white'
+    }else{
+        bckgcolor= '#a0a0a01c'
+        color = 'balack'
+    }
 
     const dispatch = useAppDispatch();
     let stringdistance = '';
@@ -34,12 +44,20 @@ const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: Trip
     }
 
     return (
-        <ListItemButton sx={{ backgroundColor: '#a0a0a01c', marginTop: '0.5rem', borderRadius: 1 }} onClick={handleClick}>
-            <ListItemIcon>{favorite ? <StarIcon /> : <></>}</ListItemIcon>
-            <ListItemText sx={{ width: '8rem', minHeight: '40px' }} primary={title} secondary={shortdescription} />
+        <ListItemButton sx={{
+            backgroundColor: bckgcolor,
+            marginTop: '0.5rem',
+            borderRadius: 1,
+            color: color,
+            '&:hover': {
+              backgroundColor: bckgcolor
+            }
+          }} onClick={handleClick}>
+            <ListItemIcon>{favorite ? <StarIcon sx={{ color: color }}/> : <></>}</ListItemIcon>
+            <ListItemText sx={{ width: '8rem', minHeight: '40px', color: color }} secondaryTypographyProps={{ sx: { color: color } }}  primary={title} secondary={shortdescription} />
             <ListItemText primary={stringdistance} />
-            <ListItemIcon><ArrowForwardIosIcon fontSize='small' sx={{ marginLeft: 'auto' }} /></ListItemIcon>
-        </ListItemButton>
+            <ListItemIcon><ArrowForwardIosIcon fontSize='small' sx={{ marginLeft: 'auto', color: color }} /></ListItemIcon>
+          </ListItemButton>
     );
 };
 
