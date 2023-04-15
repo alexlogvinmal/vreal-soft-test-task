@@ -12,6 +12,10 @@ interface MarkerType {
     lng: number
   }
 }
+  const center = {
+    lat: 48.4648,
+    lng: 35.0463
+  };
 
 const Map = () => {
 
@@ -19,11 +23,6 @@ const Map = () => {
     height: '400px',
     width: '100%'
   };
-  const center = {
-    lat: 48.4648,
-    lng: 35.0463
-  };
-
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: API_KEY,
