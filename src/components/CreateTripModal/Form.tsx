@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { setOpenModal } from '../../redux/setOpenModal/setOpenModal';
 import { db } from '../../utils/firebase';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { setUpdate } from '../../redux/setUpdate/setUpdate';
@@ -84,8 +84,8 @@ const Form = () => {
                 <TextField fullWidth id="outlined-multiline-flexible" label="Title" onChange={e => setTitle(e.target.value)} />
                 <TextField helperText={`${sdescription.length}/160`} FormHelperTextProps={{ style: { marginLeft: 'auto' } }} fullWidth id="outlined-textarea" label="Short description" inputProps={{ maxLength: 160 }} multiline rows={2} onChange={e => setSdescription(e.target.value)} />
                 <TextField fullWidth id="outlined-multiline-static" label="Full description" multiline rows={4} onChange={e => setFdescription(e.target.value)} />
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                <MapOutlinedIcon/><Typography>Length {stringdistance}</Typography>  
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <MapOutlinedIcon /><Typography>Length {stringdistance}</Typography>
                 </Box>
                 <Button variant="contained" sx={{ textTransform: 'none' }} onClick={handleSubmit}>Add path</Button>
             </Stack>

@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Box } from "@material-ui/core";
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import { getDocs, collection, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../utils/firebase';
 import Typography from '@mui/material/Typography';
-import { fetchFiles } from '../../redux/fetchData/action';
 import MapInfo from './MapInfo';
 import Link from '@mui/material/Link';
 import { setUpdate } from '../../redux/setUpdate/setUpdate';
@@ -32,12 +30,12 @@ const RouteInfo = () => {
 
     const addToFavoriteTrip = async () => {
         const tripDoc = doc(db, 'data', id);
-        await updateDoc(tripDoc, {favorite: true});
+        await updateDoc(tripDoc, { favorite: true });
         dispatch(setUpdate());
     }
     const removeFromFavoriteTrip = async () => {
         const tripDoc = doc(db, 'data', id);
-        await updateDoc(tripDoc, {favorite: false});
+        await updateDoc(tripDoc, { favorite: false });
         dispatch(setUpdate());
     }
 
@@ -49,7 +47,7 @@ const RouteInfo = () => {
                     <Typography fontSize={20}>{tripInfo[0].title}</Typography>
                     <Typography fontSize={17}>{stringdistance}</Typography>
                 </Box>
-                <Typography sx={{ marginTop: '1rem' }}>{tripInfo[0].fulldescription}</Typography>
+                <Typography sx={{ marginTop: '1rem', marginBottom: '1rem' }}>{tripInfo[0].fulldescription}</Typography>
                 <Box>
                     <MapInfo />
                 </Box>

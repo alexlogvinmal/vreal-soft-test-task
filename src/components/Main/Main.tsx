@@ -9,7 +9,7 @@ import { useAppSelector } from '../../redux/hook';
 
 
 const Main = () => {
-    const show = useAppSelector(state=> state.setShowRouteInfoReducer.show)
+    const show = useAppSelector(state => state.setShowRouteInfoReducer.show)
 
 
     return (
@@ -21,11 +21,11 @@ const Main = () => {
                 spacing={2}
                 height='500px'
                 marginRight='1rem'
-                // justifyContent={'space-evenly'}
+            // justifyContent={'space-evenly'}
             >
                 <RouteList />
                 {show ? <RouteInfo /> : <></>}
-                
+
             </Stack>
         </Paper>
     );

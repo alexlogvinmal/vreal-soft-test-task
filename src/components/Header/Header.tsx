@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../redux/hook';
 import { setOpenModal } from '../../redux/setOpenModal/setOpenModal';
 
 const Header = () => {
-    const dispatch = useAppDispatch(); 
+    const dispatch = useAppDispatch();
 
     const handleClickOpen = () => {
         dispatch(setOpenModal(true))

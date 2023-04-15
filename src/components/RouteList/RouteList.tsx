@@ -25,19 +25,19 @@ const RouteList = () => {
 
     const filteredTripList = tripList.filter(
         (item) =>
-          item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-          item.fulldescription.toLowerCase().includes(searchText.toLowerCase())
-      );
+            item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            item.fulldescription.toLowerCase().includes(searchText.toLowerCase())
+    );
 
-      filteredTripList.sort((a, b) => {
+    filteredTripList.sort((a, b) => {
         if (a.favorite && !b.favorite) {
-          return -1;
+            return -1;
         }
         if (!a.favorite && b.favorite) {
-          return 1;
+            return 1;
         }
         return 0;
-      });
+    });
 
 
     return (
@@ -51,7 +51,7 @@ const RouteList = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search..."
                     inputProps={{ 'aria-label': 'search trip' }}
-                    onChange={e=>setSearchText(e.target.value)}
+                    onChange={e => setSearchText(e.target.value)}
                 />
                 <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
                     <SearchIcon />

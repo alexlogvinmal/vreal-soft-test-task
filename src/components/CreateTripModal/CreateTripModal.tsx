@@ -16,17 +16,17 @@ import { setOpenModal } from '../../redux/setOpenModal/setOpenModal';
 
 
 const CreateTripModal = () => {
-    const dispatch = useAppDispatch();  
+    const dispatch = useAppDispatch();
     const open = useAppSelector(state => state.setOpenModalReducer.modal);
     const handleClose = () => {
         dispatch(setOpenModal(false))
     };
-    
+
     const CustomDialog = withStyles({
         paper: {
-          minWidth: '800px',
+            minWidth: '800px',
         },
-      })(Dialog);
+    })(Dialog);
 
     return (
         <>
@@ -53,7 +53,7 @@ const CreateTripModal = () => {
                         spacing={2}
                         justifyContent={'space-evenly'}
                     >
-                       <Form/>
+                        <Form />
                         <Stack
                             component="form"
                             sx={{
@@ -62,7 +62,7 @@ const CreateTripModal = () => {
                             spacing={2}
                             noValidate
                             autoComplete="off">
-                            <Map/>
+                            <Map />
                         </Stack>
                     </Stack>
                 </DialogContent>
