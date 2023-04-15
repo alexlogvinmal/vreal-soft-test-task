@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../../utils/firebase';
 import ShortTripInfo from './ShortTripInfo';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -10,7 +8,6 @@ import List from '@mui/material/List';
 import { Box } from '@material-ui/core';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { fetchFiles } from '../../redux/fetchData/action';
-import { TripListTypeNew } from '../../redux/fetchData/reducer';
 
 
 
@@ -19,24 +16,28 @@ const RouteList = () => {
 
     const dispatch = useAppDispatch();
     const update = useAppSelector(state => state.setUpdateReducer.update);
-
+    const [searchText, setSearchText] = useState('');
     const tripList = useAppSelector(state => state.fetchReducer.data);
     useEffect(() => {
         dispatch(fetchFiles());
     }, [update]);
 
-    // Сортировка массива данных
-    function compare(a: TripListTypeNew, b: TripListTypeNew) {
+
+    const filteredTripList = tripList.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+          item.fulldescription.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+      filteredTripList.sort((a, b) => {
         if (a.favorite && !b.favorite) {
-            return -1;
+          return -1;
         }
         if (!a.favorite && b.favorite) {
-            return 1;
+          return 1;
         }
         return 0;
-    }
-    tripList.sort(compare);
-
+      });
 
 
     return (
@@ -50,6 +51,7 @@ const RouteList = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search..."
                     inputProps={{ 'aria-label': 'search trip' }}
+                    onChange={e=>setSearchText(e.target.value)}
                 />
                 <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
                     <SearchIcon />
@@ -69,7 +71,7 @@ const RouteList = () => {
                 }}
 
             >
-                {tripList.map(info => <ShortTripInfo {...info} key={info.id} />)}
+                {filteredTripList.map(info => <ShortTripInfo {...info} key={info.id} />)}
             </List>
 
         </Box>
