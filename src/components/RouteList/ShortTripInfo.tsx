@@ -19,14 +19,14 @@ interface TripListType {
 
 
 const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: TripListType) => {
-    let bckgcolor =  '#a0a0a01c';
+    let bckgcolor = '#a0a0a01c';
     let color = 'balack'
-    const choseId = useAppSelector(state=>state.setIdReducer.id)
-    if(choseId==id){
-        bckgcolor= '#4a98e5'
+    const choseId = useAppSelector(state => state.setIdReducer.id)
+    if (choseId == id) {
+        bckgcolor = '#4a98e5'
         color = 'white'
-    }else{
-        bckgcolor= '#a0a0a01c'
+    } else {
+        bckgcolor = '#a0a0a01c'
         color = 'balack'
     }
 
@@ -50,14 +50,14 @@ const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: Trip
             borderRadius: 1,
             color: color,
             '&:hover': {
-              backgroundColor: bckgcolor
+                backgroundColor: bckgcolor
             }
-          }} onClick={handleClick}>
-            <ListItemIcon>{favorite ? <StarIcon sx={{ color: color }}/> : <></>}</ListItemIcon>
-            <ListItemText sx={{ width: '8rem', minHeight: '40px', color: color }} secondaryTypographyProps={{ sx: { color: color } }}  primary={title} secondary={shortdescription} />
+        }} onClick={handleClick}>
+            <ListItemIcon>{favorite ? <StarIcon sx={{ color: color }} /> : <></>}</ListItemIcon>
+            <ListItemText sx={{ width: '8rem', minHeight: '40px', color: color }} secondaryTypographyProps={{ sx: { color: color } }} primary={title} secondary={shortdescription} />
             <ListItemText primary={stringdistance} />
             <ListItemIcon><ArrowForwardIosIcon fontSize='small' sx={{ marginLeft: 'auto', color: color }} /></ListItemIcon>
-          </ListItemButton>
+        </ListItemButton>
     );
 };
 
