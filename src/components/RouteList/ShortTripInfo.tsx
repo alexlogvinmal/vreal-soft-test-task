@@ -48,6 +48,7 @@ const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: Trip
         <ListItemButton sx={{
             backgroundColor: bckgcolor,
             marginTop: '0.5rem',
+            marginRight: '0.5rem',
             borderRadius: 1,
             color: color,
             '&:hover': {
