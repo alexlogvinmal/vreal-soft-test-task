@@ -56,7 +56,7 @@ const ShortTripInfo = ({ id, favorite, distance, title, shortdescription }: Trip
             }
         }} onClick={handleClick}>
             <ListItemIcon>{favorite ? <StarIcon sx={{ color: color }} /> : <></>}</ListItemIcon>
-            <ListItemText sx={{ width: '8rem', minHeight: '40px', color: color }} secondaryTypographyProps={{ sx: { color: color } }} primary={title} secondary={shortdescription} />
+            <ListItemText sx={{ width: '8rem', minHeight: '40px', color: color, overflow: 'auto' }} secondaryTypographyProps={{ sx: { color: color } }} primary={title} secondary={shortdescription} />
             <ListItemText primary={stringdistance} />
             <ListItemIcon><ArrowForwardIosIcon fontSize='small' sx={{ marginLeft: 'auto', color: color }} /></ListItemIcon>
         </ListItemButton>
