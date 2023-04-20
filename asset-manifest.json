@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/vreal-soft-test-task/static/css/main.7e93e2c7.css",
-    "main.js": "/vreal-soft-test-task/static/js/main.9a4e278a.js",
+    "main.js": "/vreal-soft-test-task/static/js/main.40636a4b.js",
     "index.html": "/vreal-soft-test-task/index.html",
     "main.7e93e2c7.css.map": "/vreal-soft-test-task/static/css/main.7e93e2c7.css.map",
-    "main.9a4e278a.js.map": "/vreal-soft-test-task/static/js/main.9a4e278a.js.map"
+    "main.40636a4b.js.map": "/vreal-soft-test-task/static/js/main.40636a4b.js.map"
   },
   "entrypoints": [
     "static/css/main.7e93e2c7.css",
-    "static/js/main.9a4e278a.js"
+    "static/js/main.40636a4b.js"
   ]
 }
