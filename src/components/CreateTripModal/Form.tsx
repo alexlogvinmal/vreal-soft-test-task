@@ -46,13 +46,12 @@ const Form = () => {
     };
 
 
-
     const handleSubmit = async () => {
-        if (title.length > 0 && sdescription.length > 0 && fdescription.length > 0 && distance > 0) {
+        if (title.trim().length > 0 && sdescription.trim().length > 0 && fdescription.trim().length > 0 && distance > 0) {
             let obj = {
-                title: title,
-                shortdescription: sdescription,
-                fulldescription: fdescription,
+                title: title.trim(),
+                shortdescription: sdescription.trim(),
+                fulldescription: fdescription.trim(),
                 markers: markers,
                 distance: distance,
                 favorite: false
